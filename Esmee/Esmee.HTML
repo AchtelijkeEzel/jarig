@@ -1,0 +1,132 @@
+Yow nerd 
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>De Jarige (Niet)Job</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background-image: url('yolo.png'); /* Achtergrondafbeelding */
+      background-size: cover; /* Achtergrondafbeelding bedekt het volledige scherm */
+      background-repeat: no-repeat; /* Voorkomt herhaling van de achtergrondafbeelding */
+      background-position: center; /* Achtergrondafbeelding in het midden */
+      margin: 0; /* Margins resetten om het uitlijnen te verbeteren */
+      padding-top: 20px; /* Ruimte toevoegen aan de bovenkant voor de titel */
+      height: 100vh; /* Volledige hoogte van het scherm */
+      position: relative; /* Relatieve positionering voor absolute positie van vakjes */
+    }
+    h1 {
+      color: blue; /* Blauwe tekstkleur voor "De Jarige (Niet)Job" */
+    }
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: center; /* Vakjes verticaal centreren */
+      height: calc(100% - 40px); /* Volledige hoogte van het scherm minus 20px voor de titel en 20px voor de padding */
+    }
+    .box {
+      width: 100px; /* Kleinere vakjes */
+      height: 100px; /* Kleinere vakjes */
+      margin: 10px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      background-color: lightblue; /* Achtergrondkleur van de vakjes */
+      border-radius: 50%; /* Rond maken */
+      position: absolute; /* Absoluut positioneren */
+    }
+    .box:hover {
+      background-color: rgba(173, 216, 230, 0.5); /* Lichtblauwe overlay bij hover */
+    }
+    .box:nth-child(1) {
+      top: 10px; /* Afstand vanaf de bovenkant */
+      left: 10px; /* Afstand vanaf de linkerkant */
+    }
+    .box:nth-child(2) {
+      top: 10px; /* Afstand vanaf de bovenkant */
+      right: 10px; /* Afstand vanaf de rechterkant */
+    }
+    .box:nth-child(3) {
+      top: 50%; /* In het midden van de container */
+      right: 10px; /* Afstand vanaf de rechterkant */
+    }
+    .video-box {
+      width: 200px; /* 2x breder dan de andere vakjes */
+      height: 200px; /* 2x hoger dan de andere vakjes */
+      margin: 10px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      background-color: lightblue; /* Achtergrondkleur van de vakjes */
+      border-radius: 50%; /* Rond maken */
+      position: absolute; /* Absoluut positioneren */
+      top: 50%; /* In het midden van de container */
+      left: 50%; /* In het midden van de container */
+      transform: translate(-50%, -50%); /* Naar boven en naar links verschuiven */
+      z-index: 2; /* Z-index verhogen zodat de videobox bovenop andere elementen ligt */
+    }
+    .video-box:hover {
+      background-color: rgba(173, 216, 230, 0.5); /* Lichtblauwe overlay bij hover */
+    }
+    .video-container {
+      position: absolute; /* Absoluut positioneren */
+      top: 0; /* Boven aan de pagina */
+      left: 0; /* Links uitgelijnd */
+      width: 100%; /* Volledige breedte van de pagina */
+      height: 100%; /* Volledige hoogte van de pagina */
+      display: none; /* Video standaard verborgen */
+    }
+    .video-container.active {
+      display: flex; /* Weergeven wanneer actief */
+      justify-content: center; /* Horizontaal centreren */
+      align-items: center; /* Verticaal centreren */
+      background-color: rgba(0, 0, 0, 0.8); /* Semi-transparante achtergrond */
+      z-index: 3; /* Z-index verhogen zodat bovenop andere elementen */
+    }
+    .video {
+      max-width: 90%; /* Maximale breedte van de video */
+      max-height: 90%; /* Maximale hoogte van de video */
+    }
+    .message {
+      display: none;
+      margin-top: 20px;
+      font-size: 18px;
+    }
+  </style>
+</head>
+<body>
+  <h1>De Jarige (Niet)Job</h1>
+  <div class="container">
+    <div class="box" onclick="showMessage(1)"></div> <!-- Links boven -->
+    <div class="box" onclick="showMessage(2)"></div> <!-- Rechts boven -->
+    <div class="box" onclick="showMessage(4)"></div> <!-- Rechts midden -->
+    <div class="video-box" onclick="showMessage(3)"></div> <!-- Midden onder -->
+  </div>
+  <div class="message" id="message1">Je krijgt hetzelfde cadeau als Anouk, ga je gezellig mee naar de film?</div>
+  <div class="message" id="message2">Grapje, geen film voor jou. Wil je me dit keer niet van de baan afrijden tijdens het karten, die (niet meer) dakloze mag ook wel mee naar eefde?</div>
+  <div class="message" id="message3">
+    <div class="video-container" id="videoContainer">
+      <iframe class="video" width="560" height="315" src="https://www.youtube.com/embed/ZTtOMF
+
+1CyO0?rel=0&autoplay=1" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+    </div>
+  </div>
+  <div class="message" id="message4">Leuke video, he?</div>
+
+  <script>
+    function showMessage(num) {
+      var message = document.getElementById('message' + num);
+      var allMessages = document.querySelectorAll('.message');
+      allMessages.forEach(function(item) {
+        item.style.display = 'none';
+      });
+      message.style.display = 'block';
+      if (num === 3) {
+        var videoContainer = document.getElementById('videoContainer');
+        videoContainer.classList.add('active'); // Toon de video-container
+      }
+    }
+  </script>
+</body>
+</html>
